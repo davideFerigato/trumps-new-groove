@@ -1,0 +1,12 @@
+{
+  "name": "@repo/emails",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./send": "./src/send.ts"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
