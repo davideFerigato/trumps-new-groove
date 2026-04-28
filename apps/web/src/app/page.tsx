@@ -1,6 +1,7 @@
 import TheButton from "@/components/TheButton";
 import PhraseDisplay from "@/components/PhraseDisplay";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import GlobalClickCounter from "@/components/GlobalClickCounter";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
           Click the button to discover what absurd thing he just did.
         </p>
+        <GlobalClickCounter />
       </section>
       <TheButton />
       <PhraseDisplay />

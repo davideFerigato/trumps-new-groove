@@ -1,38 +1,40 @@
 "use client";
 import { trpc } from "@/lib/trpc/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Skeleton } from "./ui/Skeleton";
+import Skeleton from "./ui/Skeleton";
+import ErrorMessage from "./ui/ErrorMessage";
+import EmptyState from "./ui/EmptyState";
 
 export default function PhraseDisplay() {
-  const { data, isLoading, error } = trpc.phrases.random.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: phrase, isLoading, isError, error } = trpc.phrases.random.useQuery();
 
   return (
     <AnimatePresence mode="wait">
       {isLoading ? (
-        <Skeleton className="h-12 w-80 rounded-lg" />
-      ) : error ? (
-        <motion.p
+        <Skeleton key="skeleton" className="h-12 w-80 rounded-lg" />
+      ) : isError ? (
+        <motion.div
           key="error"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
-          className="text-red-500"
         >
-          Could not summon prophecy right now.
-        </motion.p>
-      ) : data ? (
+          <ErrorMessage message={error?.message || "Failed to load phrase"} />
+        </motion.div>
+      ) : phrase ? (
         <motion.blockquote
-          key={data.id}
+          key={phrase.id}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
+          transition={{ type: "spring", stiffness: 200 }}
           className="text-2xl font-bold text-center max-w-xl italic border-l-4 border-yellow-500 pl-4"
         >
-          “{data.text}”
+          “{phrase.text}”
         </motion.blockquote>
-      ) : null}
+      ) : (
+        <EmptyState key="empty" message="No phrase available. Click the button!" />
+      )}
     </AnimatePresence>
   );
 }
