@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { t, publicProcedure } from "../trpc";
 import { isAuthed } from "../middleware/auth";
-import { userWallets, userBadges, badges } from "@repo/db/schema";
+import { userWallets, userBadges, badges, phrases } from "@repo/db/schema";
 import { eq, and, sql } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 
@@ -19,5 +19,4 @@ export const userRouter = t.router({
     });
     return userBadgeList.map(ub => ub.badge);
   }),
-  // ... eventuali altre procedure per assegnare automaticamente badge
 });

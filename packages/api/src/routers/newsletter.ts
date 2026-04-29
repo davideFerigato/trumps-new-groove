@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { t, publicProcedure } from "../trpc";
-import { subscribers } from "@repo/db/schema";
-import { eq } from "drizzle-orm";
+import { subscribers, phrases } from "@repo/db/schema";
+import { eq, sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { TRPCError } from "@trpc/server";
 

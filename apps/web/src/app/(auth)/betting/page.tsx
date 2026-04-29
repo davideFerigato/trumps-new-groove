@@ -1,15 +1,14 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import BettingForm from "@/components/BettingForm";
+import UserProfile from "@/components/UserProfile";
 
-export default async function BettingPage() {
+export default async function ProfilePage() {
   const { userId } = await auth();
   if (!userId) redirect("/sign-in");
-
   return (
-    <div className="max-w-2xl mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-6">Place Your Bet</h1>
-      <BettingForm />
+    <div className="py-8">
+      <h1 className="text-3xl font-bold mb-6">Your Profile</h1>
+      <UserProfile userId={userId} />
     </div>
   );
 }

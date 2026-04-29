@@ -2,6 +2,7 @@ import { z } from "zod";
 import { t } from "../trpc";
 import { phrases } from "@repo/db/schema";
 import { eq, sql } from "drizzle-orm";
+import { TRPCError } from "@trpc/server";
 
 export const phrasesRouter = t.router({
   random: t.procedure.query(async ({ ctx }) => {
