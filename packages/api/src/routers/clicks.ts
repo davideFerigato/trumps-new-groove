@@ -11,9 +11,15 @@ export const clicksRouter = t.router({
   }),
 
   click: t.procedure
-    .input(z.object({ soundEnabled: z.boolean().optional() }))
-    .mutation(async ({ ctx }) => {
-      const userId = ctx.userId; // può essere null
+    .input(
+      z
+        .object({
+          soundEnabled: z.boolean().optional(),
+        })
+        .optional()
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.userId;
 
       if (userId) {
         // Rate limiting solo per utenti loggati
@@ -29,7 +35,7 @@ export const clicksRouter = t.router({
         await ctx.redis.incr(rateLimitKey);
         await ctx.redis.expire(rateLimitKey, 86400);
 
-        // Aggiorna database utente
+        // Aggiorna wallet utente
         await ctx.db
           .insert(userWallets)
           .values({
@@ -46,9 +52,8 @@ export const clicksRouter = t.router({
           });
       }
 
-      // Incrementa sempre il contatore globale (anche per anonimi)
+      // Incrementa sempre il contatore globale (anche anonimo)
       await ctx.redis.incr("global_clicks");
-
       return { success: true };
     }),
 });
