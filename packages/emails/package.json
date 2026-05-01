@@ -4,9 +4,16 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./send": "./src/send.ts"
+    "./send": "./src/send.ts",
+    "./templates/*": "./src/templates/*"
   },
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@react-email/components": "^0.0.24",
+    "resend": "^4.0.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "^5.5.0"
+  }
 }
