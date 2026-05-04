@@ -1,1 +1,161 @@
 @import "tailwindcss";
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Uncial+Antiqua&display=swap');
+
+@theme {
+  /* Gold Scale */
+  --color-gold-50: #fffdf0;
+  --color-gold-100: #fef9c3;
+  --color-gold-200: #fef08a;
+  --color-gold-300: #fde047;
+  --color-gold-400: #facc15;
+  --color-gold-500: #eab308;
+  --color-gold-600: #ca8a04;
+  --color-gold-700: #a16207;
+  --color-gold-800: #854d0e;
+  --color-gold-900: #713f12;
+  --color-gold-950: #422006;
+
+  /* Accent Colors */
+  --color-aztec-red: #9b1c1c;
+  --color-jungle-green: #14532d;
+  --color-obsidian: #0f0f0f;
+  --color-bone-white: #fefce8;
+  --color-copper: #b45309;
+  --color-turquoise: #0e7490;
+
+  /* Surfaces – dark mode first */
+  --color-bg-dark: #1a0a00;
+  --color-surface-dark: #2d1500;
+  --color-surface-dark-2: #3d1f00;
+  --color-bg-light: #fefce8;
+  --color-surface-light: #fef9c3;
+  --color-surface-light-2: #fef08a;
+
+  /* Typography */
+  --font-cinzel-decorative: 'Cinzel Decorative', 'Trajan Pro', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-uncial: 'Uncial Antiqua', serif;
+  --font-sans: 'Cinzel', serif;
+}
+
+/* Default dark mode */
+html {
+  --bg: var(--color-bg-dark);
+  --surface: var(--color-surface-dark);
+  --surface-2: var(--color-surface-dark-2);
+  --text: var(--color-bone-white);
+  --text-muted: var(--color-gold-600);
+  --gold-primary: var(--color-gold-500);
+  --gold-secondary: var(--color-gold-400);
+  --gold-dark: var(--color-gold-700);
+  --gold-light: var(--color-gold-300);
+  --border-gold: var(--color-gold-600);
+}
+
+html[data-theme="light"] {
+  --bg: var(--color-bg-light);
+  --surface: var(--color-surface-light);
+  --surface-2: var(--color-surface-light-2);
+  --text: var(--color-obsidian);
+  --text-muted: var(--color-gold-700);
+  --gold-primary: var(--color-gold-600);
+  --gold-secondary: var(--color-gold-500);
+  --gold-dark: var(--color-gold-800);
+  --gold-light: var(--color-gold-400);
+  --border-gold: var(--color-gold-500);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-cinzel);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Gold Shimmer Animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    105deg,
+    var(--color-gold-500) 0%,
+    var(--color-gold-300) 30%,
+    var(--color-gold-600) 50%,
+    var(--color-gold-300) 70%,
+    var(--color-gold-500) 100%
+  );
+  background-size: 200% auto;
+  animation: goldShimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Aztec Border Pattern */
+.aztec-border {
+  border: 2px solid var(--border-gold);
+  position: relative;
+}
+
+.aztec-border::before,
+.aztec-border::after {
+  content: '';
+  position: absolute;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold-primary) 0px,
+    var(--gold-primary) 8px,
+    transparent 8px,
+    transparent 12px
+  );
+  height: 4px;
+  left: 0;
+  right: 0;
+}
+
+.aztec-border::before { top: 3px; }
+.aztec-border::after { bottom: 3px; }
+
+/* Skeleton shimmer */
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-dark) 25%,
+    var(--color-gold-950) 50%,
+    var(--color-surface-dark) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+/* Golden glow */
+.golden-glow {
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
+}
+
+/* Aztec step pattern (reusable) */
+.aztec-step-pattern {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    var(--border-gold) 5px,
+    var(--border-gold) 6px
+  );
+  height: 4px;
+}
+
+/* Font utilities */
+.font-cinzel-decorative { font-family: var(--font-cinzel-decorative); }
+.font-cinzel { font-family: var(--font-cinzel); }
+.font-uncial { font-family: var(--font-uncial); }

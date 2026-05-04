@@ -7,18 +7,34 @@ import "../styles/globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider
-      afterSignInUrl="/"
-      afterSignUpUrl="/"
+      fallbackRedirectUrl="/"
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+      appearance={{
+        variables: {
+          colorPrimary: '#eab308',
+          colorBackground: '#2d1500',
+          colorInputBackground: '#1a0a00',
+          colorInputText: '#fef9c3',
+          colorText: '#fef9c3',
+          colorTextSecondary: '#ca8a04',
+          borderRadius: '0.5rem',
+          fontFamily: 'Cinzel, serif',
+        },
+      }}
     >
-      <html lang="en" suppressHydrationWarning>
-        <body className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+      <html lang="en" data-theme="dark" suppressHydrationWarning>
+        <body className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
           <TRPCProvider>
             <Header />
-            <main className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">{children}</main>
+            <main className="mx-auto">{children}</main>
             <Footer />
           </TRPCProvider>
         </body>
       </html>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
     </ClerkProvider>
   );
 }

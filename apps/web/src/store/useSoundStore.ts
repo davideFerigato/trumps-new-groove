@@ -6,6 +6,6 @@ interface SoundState {
 }
 
 export const useSoundStore = create<SoundState>((set) => ({
-  soundEnabled: true, // abilitato di default
+  soundEnabled: false, // OFF by default
   toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
 }));

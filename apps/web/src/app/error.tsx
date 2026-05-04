@@ -1,13 +1,20 @@
 "use client";
+import { AlertTriangle } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 export default function ErrorPage({ error, reset }: { error: Error; reset: () => void }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-      <h2 className="text-2xl font-bold text-red-600">Something went wrong!</h2>
-      <p className="text-gray-500">{error.message || "An unexpected error occurred."}</p>
-      <button onClick={reset} className="px-4 py-2 bg-blue-600 text-white rounded">
-        Try again
-      </button>
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
+      <AlertTriangle className="w-24 h-24 text-aztec-red mb-6" />
+      <h1 className="text-4xl font-cinzel-decorative gold-shimmer mb-4">
+        The Oracle Has Spoken an Error
+      </h1>
+      <p className="text-gold-600 mb-8 max-w-md">
+        Something went wrong in the imperial machinery.
+      </p>
+      <Button variant="secondary" onClick={reset}>
+        Try Again
+      </Button>
     </div>
   );
 }
