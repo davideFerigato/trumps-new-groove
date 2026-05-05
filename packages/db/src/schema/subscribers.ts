@@ -5,5 +5,6 @@ export const subscribers = pgTable("subscribers", {
   email: text("email").notNull().unique(),
   confirmed: boolean("confirmed").default(false),
   unsubscribeToken: text("unsubscribe_token").notNull(),
+  userId: text("user_id"), // <-- nuova colonna, nullable
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

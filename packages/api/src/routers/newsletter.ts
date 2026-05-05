@@ -4,10 +4,13 @@ import { subscribers } from "@repo/db/schema";
 import { eq, sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { TRPCError } from "@trpc/server";
-// import { resend } from "@repo/emails/send";
-// import ConfirmSubscriptionEmail from "@repo/emails/templates/ConfirmSubscription";
-// import WelcomeEmail from "@repo/emails/templates/Welcome";
-// import { env } from "@repo/config/env";
+import { Resend } from "resend";
+import ConfirmSubscriptionEmail from "@repo/emails/templates/ConfirmSubscription";
+import WelcomeEmail from "@repo/emails/templates/Welcome";
+import { tryAwardBadge } from "./badges";
+
+const resendApiKey = process.env.RESEND_API_KEY;
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 function getBaseUrl() {
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
@@ -19,20 +22,29 @@ export const newsletterRouter = t.router({
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ ctx, input }) => {
       const token = randomUUID();
-      // Inserisci o ignora se già esistente
+      const userId = ctx.userId ?? null; // utente loggato (opzionale)
+
       await ctx.db.insert(subscribers).values({
         email: input.email,
         confirmed: false,
         unsubscribeToken: token,
+        userId, // salva l'id se l'utente è loggato
       }).onConflictDoNothing({ target: subscribers.email });
 
-      // Email di conferma disabilitata temporaneamente
-      // const confirmationUrl = `${getBaseUrl()}/api/newsletter/confirm?token=${token}`;
-      // try {
-      //   await resend.emails.send({...});
-      // } catch (e) {
-      //   console.error("Errore invio email conferma:", e);
-      // }
+      // Invia email di conferma se la chiave è configurata
+      if (resend) {
+        const confirmationUrl = `${getBaseUrl()}/api/newsletter/confirm?token=${token}`;
+        try {
+          await resend.emails.send({
+            from: "Trump's New Groove <onboarding@resend.dev>",
+            to: input.email,
+            subject: "Confirm your subscription",
+            react: ConfirmSubscriptionEmail({ confirmationUrl }),
+          });
+        } catch (e) {
+          console.error("Errore invio email conferma:", e);
+        }
+      }
 
       return { success: true };
     }),
@@ -44,20 +56,33 @@ export const newsletterRouter = t.router({
         .update(subscribers)
         .set({ confirmed: true })
         .where(eq(subscribers.unsubscribeToken, input.token))
-        .returning({ email: subscribers.email });
+        .returning({ email: subscribers.email, userId: subscribers.userId });
 
       if (result.length === 0) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid token" });
       }
 
-      // Email di benvenuto disabilitata temporaneamente
-      // try {
-      //   await resend.emails.send({...});
-      // } catch (e) {
-      //   console.error("Errore invio email benvenuto:", e);
-      // }
+      const subscriber = result[0];
 
-      return { success: true, email: result[0].email };
+      // Se l'iscrizione è associata a un utente, assegna il badge "True Believer"
+      if (subscriber.userId) {
+        await tryAwardBadge(ctx.db, subscriber.userId, "True Believer");
+      }
+
+      if (resend) {
+        try {
+          await resend.emails.send({
+            from: "Trump's New Groove <onboarding@resend.dev>",
+            to: subscriber.email,
+            subject: "Welcome to Trump's New Groove!",
+            react: WelcomeEmail({ email: subscriber.email }),
+          });
+        } catch (e) {
+          console.error("Errore invio email benvenuto:", e);
+        }
+      }
+
+      return { success: true, email: subscriber.email };
     }),
 
   unsubscribe: publicProcedure

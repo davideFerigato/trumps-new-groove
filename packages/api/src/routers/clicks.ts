@@ -3,6 +3,7 @@ import { t } from "../trpc";
 import { TRPCError } from "@trpc/server";
 import { userWallets } from "@repo/db/schema";
 import { eq, sql } from "drizzle-orm";
+import { tryAwardBadge } from "./badges";
 
 export const clicksRouter = t.router({
   globalCount: t.procedure.query(async ({ ctx }) => {
@@ -50,6 +51,29 @@ export const clicksRouter = t.router({
               totalClicks: sql`${userWallets.totalClicks} + 1`,
             },
           });
+
+        // Recupera i dati aggiornati per controllare i badge
+        const wallet = await ctx.db
+          .select({
+            totalClicks: userWallets.totalClicks,
+            trumpbucksBalance: userWallets.trumpbucksBalance,
+          })
+          .from(userWallets)
+          .where(eq(userWallets.clerkUserId, userId))
+          .limit(1);
+
+        if (wallet[0]) {
+          // Assegna badge in base alle soglie
+          if (wallet[0].totalClicks >= 1) {
+            await tryAwardBadge(ctx.db, userId, "First Click");
+          }
+          if (wallet[0].totalClicks >= 100) {
+            await tryAwardBadge(ctx.db, userId, "Click Addict");
+          }
+          if (wallet[0].trumpbucksBalance >= 1000) {
+            await tryAwardBadge(ctx.db, userId, "Whale");
+          }
+        }
       }
 
       // Incrementa sempre il contatore globale (anche anonimo)
