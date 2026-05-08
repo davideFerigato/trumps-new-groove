@@ -7,22 +7,20 @@ import "../styles/globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider
-      fallbackRedirectUrl="/"
-      signInUrl="/sign-in"
-      signUpUrl="/sign-up"
-      appearance={{
-        variables: {
-          colorPrimary: '#eab308',
-          colorBackground: '#2d1500',
-          colorInputBackground: '#1a0a00',
-          colorInputText: '#fef9c3',
-          colorText: '#fef9c3',
-          colorTextSecondary: '#ca8a04',
-          borderRadius: '0.5rem',
-          fontFamily: 'Cinzel, serif',
-        },
-      }}
-    >
+  signInFallbackRedirectUrl="/"
+  appearance={{
+    variables: {
+      colorPrimary: '#eab308',
+      colorBackground: '#2d1500',
+      colorInputBackground: '#1a0a00',
+      colorInputText: '#fef9c3',
+      colorText: '#fef9c3',
+      colorTextSecondary: '#ca8a04',
+      borderRadius: '0.5rem',
+      fontFamily: 'Cinzel, serif',
+    },
+  }}
+>
       <html lang="en" data-theme="dark" suppressHydrationWarning>
         <body className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
           <TRPCProvider>
