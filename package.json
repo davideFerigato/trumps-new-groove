@@ -6,9 +6,7 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
-    "test": "turbo test",
-    "db:push": "pnpm --filter @repo/db db:push",
-    "db:seed": "pnpm --filter @repo/db db:seed"
+    "test": "turbo test"
   },
   "devDependencies": {
     "turbo": "^2.1.0"

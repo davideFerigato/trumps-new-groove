@@ -3,13 +3,13 @@ on:
   push:
     branches: [main]
 jobs:
-  lint-test-deploy:
+  lint-test-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 10.33.2
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -18,12 +18,4 @@ jobs:
       - run: pnpm run lint
       - run: pnpm run typecheck
       - run: pnpm run test -- --run
-      - name: Build
-        run: pnpm run build
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID }}
-          working-directory: ./apps/web
+      - run: pnpm run build
