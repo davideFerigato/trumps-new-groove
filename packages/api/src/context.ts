@@ -5,7 +5,8 @@ import { Redis } from "@upstash/redis";
 import { env } from "@repo/config/env";
 
 export async function createContext(opts: FetchCreateContextFnOptions) {
-  const { userId } = getAuth(opts.req);
+
+  const { userId } = getAuth(opts.req as any);
   return {
     userId,
     db,
