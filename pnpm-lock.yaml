@@ -120,6 +120,9 @@ importers:
       drizzle-orm:
         specifier: ^0.33.0
         version: 0.33.0(@types/react@19.2.14)(postgres@3.4.9)(react@19.2.5)
+      resend:
+        specifier: ^4.8.0
+        version: 4.8.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       superjson:
         specifier: ^2.2.1
         version: 2.2.6
