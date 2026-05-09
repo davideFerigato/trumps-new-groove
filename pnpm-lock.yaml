@@ -167,6 +167,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config
+      '@types/node':
+        specifier: ^20.19.39
+        version: 20.19.39
       typescript:
         specifier: ^5.5.0
         version: 5.9.3
