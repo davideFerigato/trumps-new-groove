@@ -11,6 +11,7 @@ const envSchema = z.object({
   SENTRY_DSN: z.string().url().optional().or(z.literal("")).optional(),
   NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
   NEXT_PUBLIC_POSTHOG_HOST: z.string().url().optional().or(z.literal("")).optional(),
+  ADMIN_USER_IDS: z.string().optional(),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 });
 
