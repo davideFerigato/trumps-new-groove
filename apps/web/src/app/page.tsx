@@ -1,7 +1,7 @@
 import TheButton from "@/components/TheButton";
 import PhraseDisplay from "@/components/PhraseDisplay";
 import NewsletterSignup from "@/components/NewsletterSignup";
-import GlobalClickCounter from "@/components/GlobalClickCounter";
+//import GlobalClickCounter from "@/components/GlobalClickCounter";
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
         <p className="mt-4 text-lg text-gold-400 italic">
           Where Every Decree is a Prophecy
         </p>
-        <GlobalClickCounter />
+        
       </section>
       <TheButton />
       <PhraseDisplay />

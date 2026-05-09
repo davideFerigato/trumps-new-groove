@@ -1,5 +1,6 @@
 "use client";
 import { trpc } from "@/lib/trpc/react";
+import GlobalClickCounter from "@/components/GlobalClickCounter";
 
 export default function AdminPanel() {
   const utils = trpc.useUtils();
@@ -12,7 +13,16 @@ export default function AdminPanel() {
 
   return (
     <div className="max-w-4xl mx-auto py-12">
-      <h1 className="text-3xl font-cinzel-decorative gold-shimmer mb-6">Imperial Command Center</h1>
+      <h1 className="text-3xl font-cinzel-decorative gold-shimmer mb-6">
+        Imperial Command Center
+      </h1>
+
+      {/* Contatore globale (visibile solo all'admin) */}
+      <div className="mb-8 p-4 bg-surface-dark aztec-border rounded-xl">
+        <GlobalClickCounter />
+      </div>
+
+      {/* Tabella scommesse attive */}
       <div className="bg-surface-dark aztec-border p-4 rounded-xl">
         <table className="w-full text-left">
           <thead>
