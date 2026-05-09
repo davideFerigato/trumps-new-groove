@@ -12,8 +12,8 @@ jobs:
       DATABASE_URL: postgresql://user:pass@localhost:5432/db
       UPSTASH_REDIS_REST_URL: https://example.com
       UPSTASH_REDIS_REST_TOKEN: dummy
-      CLERK_SECRET_KEY: dummy
-      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: dummy
+      CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }}
       CLERK_WEBHOOK_SECRET: dummy
       RESEND_API_KEY: dummy
       SENTRY_DSN: https://sentry.example.com
