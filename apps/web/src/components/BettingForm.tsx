@@ -29,7 +29,6 @@ export default function BettingForm() {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm<BetFormValues>({
     resolver: zodResolver(betSchema),
     defaultValues: { amount: 10, prediction: "yes" },
@@ -47,7 +46,7 @@ export default function BettingForm() {
         prediction: data.prediction === "yes",
       });
       setSuccessMsg("Bet placed successfully!");
-    } catch (err) {
+    } catch (_err) {
       // error handled by mutation state
     }
   };

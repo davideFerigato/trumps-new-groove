@@ -4,15 +4,15 @@ import EmptyState from "./ui/EmptyState";
 import { Award } from "lucide-react";
 import { motion } from "framer-motion";
 
-const badgeIcons: Record<string, string> = {
-  "First Click": "Feather",
-  "Click Addict": "Zap",
-  "True Believer": "Mail",
-  Prophet: "Eye",
-  Whale: "Crown",
-};
+//const badgeIcons: Record<string, string> = {
+//  "First Click": "Feather",
+//  "Click Addict": "Zap",
+//  "True Believer": "Mail",
+//  Prophet: "Eye",
+//  Whale: "Crown",
+//};
 
-export default function BadgeCollection({ userId }: { userId: string }) {
+export default function BadgeCollection({ userId: _userId }: { userId: string }) {
   const { data: badges, isLoading } = trpc.user.badges.useQuery();
 
   if (isLoading) return <p className="text-gold-600">Loading...</p>;

@@ -1,6 +1,6 @@
 "use client";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { motion } from "framer-motion";
+//import { motion } from "framer-motion";
 import DarkModeToggle from "./DarkModeToggle";
 import SoundToggle from "./SoundToggle";
 import Link from "next/link";

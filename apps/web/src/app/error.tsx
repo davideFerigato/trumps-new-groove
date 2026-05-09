@@ -2,7 +2,7 @@
 import { AlertTriangle } from "lucide-react";
 import Button from "@/components/ui/Button";
 
-export default function ErrorPage({ error, reset }: { error: Error; reset: () => void }) {
+export default function ErrorPage({ error: _error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
       <AlertTriangle className="w-24 h-24 text-aztec-red mb-6" />
