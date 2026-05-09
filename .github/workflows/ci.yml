@@ -16,7 +16,7 @@ jobs:
       NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: dummy
       CLERK_WEBHOOK_SECRET: dummy
       RESEND_API_KEY: dummy
-      SENTRY_DSN: dummy
+      SENTRY_DSN: https://sentry.example.com
       NEXT_PUBLIC_POSTHOG_KEY: dummy
       NEXT_PUBLIC_POSTHOG_HOST: https://example.com
       CRON_SECRET: dummy
