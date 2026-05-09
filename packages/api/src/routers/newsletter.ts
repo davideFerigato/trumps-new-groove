@@ -4,10 +4,13 @@ import { subscribers } from "@repo/db/schema";
 import { eq, sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { TRPCError } from "@trpc/server";
+import { Resend } from "resend";
+import ConfirmSubscriptionEmail from "../email-templates/ConfirmSubscription";
+import WelcomeEmail from "../email-templates/Welcome";
 import { tryAwardBadge } from "./badges";
 
-// L'invio email verrà riabilitato quando avremo configurato la build di @repo/emails
-// per ora usiamo solo la logica di database
+const resendApiKey = process.env.RESEND_API_KEY;
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 function getBaseUrl() {
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
@@ -21,15 +24,47 @@ export const newsletterRouter = t.router({
       const token = randomUUID();
       const userId = ctx.userId ?? null;
 
-      await ctx.db.insert(subscribers).values({
-        email: input.email,
-        confirmed: false,
-        unsubscribeToken: token,
-        userId,
-      }).onConflictDoNothing({ target: subscribers.email });
+      // Controlla se l'email esiste già
+      const existing = await ctx.db
+        .select({ id: subscribers.id })
+        .from(subscribers)
+        .where(eq(subscribers.email, input.email))
+        .limit(1);
 
-      // In futuro riattiveremo l'invio email con Resend + @repo/emails
-      // if (resend) { ... }
+      if (existing.length > 0) {
+        // Aggiorna il token e reimposta confirmed = false
+        await ctx.db
+          .update(subscribers)
+          .set({
+            unsubscribeToken: token,
+            confirmed: false,
+            userId, // aggiorna anche l'userId se l'utente è loggato
+          })
+          .where(eq(subscribers.email, input.email));
+      } else {
+        // Inserisci nuovo record
+        await ctx.db.insert(subscribers).values({
+          email: input.email,
+          confirmed: false,
+          unsubscribeToken: token,
+          userId,
+        });
+      }
+
+      // Invia email di conferma
+      if (resend) {
+        const confirmationUrl = `${getBaseUrl()}/api/newsletter/confirm?token=${encodeURIComponent(token)}`;
+        try {
+          await resend.emails.send({
+            from: "Trump's New Groove <onboarding@resend.dev>",
+            to: input.email,
+            subject: "Confirm your subscription",
+            react: ConfirmSubscriptionEmail({ confirmationUrl }),
+          });
+        } catch (e) {
+          console.error("Errore invio email conferma:", e);
+        }
+      }
 
       return { success: true };
     }),
@@ -54,8 +89,19 @@ export const newsletterRouter = t.router({
         await tryAwardBadge(ctx.db, sub.userId, "True Believer");
       }
 
-      // In futuro riattiveremo l'invio email di benvenuto
-      // if (resend) { ... }
+      // Invia email di benvenuto
+      if (resend) {
+        try {
+          await resend.emails.send({
+            from: "Trump's New Groove <onboarding@resend.dev>",
+            to: sub.email,
+            subject: "Welcome to Trump's New Groove!",
+            react: WelcomeEmail({ email: sub.email }),
+          });
+        } catch (e) {
+          console.error("Errore invio email benvenuto:", e);
+        }
+      }
 
       return { success: true, email: sub.email };
     }),
