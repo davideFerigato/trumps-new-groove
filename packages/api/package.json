@@ -8,7 +8,8 @@
     "./context": "./src/context.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'lint ok'"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.0.0",

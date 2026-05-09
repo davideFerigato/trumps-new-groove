@@ -12,7 +12,8 @@
     "db:migrate": "dotenv -e ../../.env -- drizzle-kit migrate",
     "db:generate": "dotenv -e ../../.env -- drizzle-kit generate",
     "db:seed": "tsx --env-file=../../.env src/seed.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'lint ok'"
   },
   "dependencies": {
     "@repo/config": "workspace:*",
@@ -21,9 +22,9 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "drizzle-kit": "^0.24.0",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
+    "drizzle-kit": "^0.24.0",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0"
   }

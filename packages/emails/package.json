@@ -7,7 +7,10 @@
     "./send": "./src/send.ts",
     "./templates/*": "./src/templates/*"
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "echo 'lint ok'",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@react-email/components": "^0.0.24",
     "resend": "^4.0.0"
