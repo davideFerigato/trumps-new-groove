@@ -1,15 +1,18 @@
 "use client";
 import { trpc } from "@/lib/trpc/react";
 import GlobalClickCounter from "@/components/GlobalClickCounter";
+import { Coins, Users, ScrollText, TrendingUp } from "lucide-react";
 
 export default function AdminPanel() {
   const utils = trpc.useUtils();
-  const { data: activeBets, isLoading } = trpc.bets.activeBets.useQuery();
+  const { data: activeBets, isLoading: betsLoading } = trpc.bets.activeBets.useQuery();
   const resolveBet = trpc.bets.resolveBet.useMutation({
     onSuccess: () => utils.bets.activeBets.invalidate(),
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  const { data: stats, isLoading: statsLoading } = trpc.admin.stats.useQuery();
+
+  if (betsLoading || statsLoading) return <p>Loading...</p>;
 
   return (
     <div className="max-w-4xl mx-auto py-12">
@@ -17,13 +20,49 @@ export default function AdminPanel() {
         Imperial Command Center
       </h1>
 
-      {/* Contatore globale (visibile solo all'admin) */}
+      {/* Contatore globale */}
       <div className="mb-8 p-4 bg-surface-dark aztec-border rounded-xl">
         <GlobalClickCounter />
       </div>
 
+      {/* Dashboard Analytics */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="bg-surface-dark aztec-border p-4 rounded-xl flex items-center gap-3">
+          <Users className="w-8 h-8 text-gold-400" />
+          <div>
+            <p className="text-xs text-gold-600 font-uncial uppercase">Total Users</p>
+            <p className="text-2xl font-cinzel-decorative gold-shimmer">{stats?.totalUsers ?? 0}</p>
+          </div>
+        </div>
+
+        <div className="bg-surface-dark aztec-border p-4 rounded-xl flex items-center gap-3">
+          <ScrollText className="w-8 h-8 text-gold-400" />
+          <div>
+            <p className="text-xs text-gold-600 font-uncial uppercase">Total Bets</p>
+            <p className="text-2xl font-cinzel-decorative gold-shimmer">{stats?.totalBets ?? 0}</p>
+          </div>
+        </div>
+
+        <div className="bg-surface-dark aztec-border p-4 rounded-xl flex items-center gap-3">
+          <Coins className="w-8 h-8 text-gold-400" />
+          <div>
+            <p className="text-xs text-gold-600 font-uncial uppercase">Volume Wagered</p>
+            <p className="text-2xl font-cinzel-decorative gold-shimmer">{stats?.totalVolume ?? 0} TB</p>
+          </div>
+        </div>
+
+        <div className="bg-surface-dark aztec-border p-4 rounded-xl flex items-center gap-3">
+          <TrendingUp className="w-8 h-8 text-gold-400" />
+          <div>
+            <p className="text-xs text-gold-600 font-uncial uppercase">Subscribers</p>
+            <p className="text-2xl font-cinzel-decorative gold-shimmer">{stats?.totalSubscribers ?? 0}</p>
+          </div>
+        </div>
+      </div>
+
       {/* Tabella scommesse attive */}
       <div className="bg-surface-dark aztec-border p-4 rounded-xl">
+        <h2 className="text-xl font-cinzel-decorative gold-shimmer mb-4">Active Prophecy Bets</h2>
         <table className="w-full text-left">
           <thead>
             <tr className="border-b border-gold-600">

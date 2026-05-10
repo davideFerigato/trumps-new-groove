@@ -13,6 +13,8 @@ const envSchema = z.object({
   NEXT_PUBLIC_POSTHOG_HOST: z.string().url().optional().or(z.literal("")).optional(),
   ADMIN_USER_IDS: z.string().optional(),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
+  HUGGINGFACE_API_KEY: z.string().optional(),
+  HUGGINGFACE_MODEL: z.string().optional(),
 });
 
 export const env = envSchema.parse(process.env);
