@@ -24,6 +24,17 @@ export const phrasesRouter = t.router({
       .limit(1);
     return result[0] ?? null;
   }),
+  getById: t.procedure
+  .input(z.object({ id: z.number() }))
+  .query(async ({ ctx, input }) => {
+    const result = await ctx.db
+      .select()
+      .from(phrases)
+      .where(eq(phrases.id, input.id))
+      .limit(1);
+    if (!result[0]) throw new TRPCError({ code: "NOT_FOUND", message: "Phrase not found" });
+    return result[0];
+  }),
 });
 
 function getMonday(): string {
