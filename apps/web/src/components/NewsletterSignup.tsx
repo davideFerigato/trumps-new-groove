@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { trpc } from "@/lib/trpc/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useT } from "@/hooks/useTranslation";
 
 const emailSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -13,6 +14,7 @@ const emailSchema = z.object({
 type EmailForm = z.infer<typeof emailSchema>;
 
 export default function NewsletterSignup() {
+  const { t } = useT();
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -37,10 +39,10 @@ export default function NewsletterSignup() {
       <div className="flex flex-col sm:flex-row items-center gap-6">
         <div className="flex-1 text-center sm:text-left">
           <h2 className="text-2xl font-cinzel-decorative gold-shimmer uppercase">
-            Receive the Emperor&apos;s Dispatches
+            {t("home.subscribeHeading")}
           </h2>
           <p className="text-gold-600 mt-2">
-            Join {countLoading ? "..." : count ?? 0} true believers
+            {t("home.joinBelievers", { count: countLoading ? "..." : (count ?? 0) })}
           </p>
         </div>
 
@@ -55,7 +57,7 @@ export default function NewsletterSignup() {
                 className="text-center p-4 rounded-lg bg-jungle-green/20 border border-jungle-green/30"
               >
                 <span className="text-gold-400 font-cinzel-decorative">
-                  The Emperor has received your oath
+                  {t("newsletter.success")}
                 </span>
               </motion.div>
             ) : (
@@ -69,17 +71,17 @@ export default function NewsletterSignup() {
               >
                 <input
                   type="email"
-                  placeholder="your.email@empire.com"
+                  placeholder={t("home.emailPlaceholder")}
                   {...register("email")}
                   className="flex-1 px-4 py-2 bg-obsidian border border-gold-600 rounded-lg text-bone-white font-cinzel placeholder:text-gold-600/50 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                  aria-label="Email address"
+                  aria-label={t("home.emailPlaceholder")}
                 />
                 <button
                   type="submit"
                   disabled={subscribe.isPending}
                   className="px-6 py-2 bg-gradient-to-r from-gold-600 to-gold-400 text-obsidian font-cinzel-decorative uppercase text-sm rounded-lg hover:golden-glow transition-all disabled:opacity-50"
                 >
-                  {subscribe.isPending ? "..." : "Pledge Loyalty"}
+                  {subscribe.isPending ? "..." : t("home.pledgeLoyalty")}
                 </button>
               </motion.form>
             )}
@@ -88,7 +90,7 @@ export default function NewsletterSignup() {
             <p className="text-aztec-red text-sm mt-2">{errors.email.message}</p>
           )}
           {subscribe.isError && (
-            <p className="text-aztec-red text-sm mt-2">{subscribe.error?.message}</p>
+            <p className="text-aztec-red text-sm mt-2">{subscribe.error?.message || t("newsletter.error")}</p>
           )}
         </div>
       </div>

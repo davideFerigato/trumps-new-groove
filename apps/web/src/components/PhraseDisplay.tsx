@@ -7,8 +7,10 @@ import EmptyState from "./ui/EmptyState";
 import { ScrollText } from "lucide-react";
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
+import { useT } from "@/hooks/useTranslation";
 
 export default function PhraseDisplay() {
+  const { t } = useT();
   const { isSignedIn } = useAuth();
   const { data: phrase, isLoading, isError, error, refetch } = trpc.phrases.random.useQuery(undefined, {
     refetchOnWindowFocus: false,
@@ -36,7 +38,7 @@ export default function PhraseDisplay() {
             exit={{ opacity: 0 }}
           >
             <ErrorMessage
-              message={error?.message || "The Oracle is temporarily unavailable. Try again, mortal."}
+              message={error?.message || t("home.theOracleError")}
               onRetry={() => refetch()}
             />
           </motion.div>
@@ -68,7 +70,7 @@ export default function PhraseDisplay() {
                   href={`/bet?phraseId=${phrase.id}`}
                   className="inline-block px-6 py-3 bg-gradient-to-r from-gold-600 to-gold-400 text-obsidian font-cinzel-decorative uppercase text-sm rounded-lg hover:golden-glow transition-all"
                 >
-                  Bet on this Prophecy
+                  {t("home.betOnThis")}
                 </Link>
               </div>
             )}
@@ -76,8 +78,8 @@ export default function PhraseDisplay() {
         ) : (
           <EmptyState
             icon={ScrollText}
-            title="Press the sacred button to receive your prophecy"
-            description="The oracle awaits your invocation."
+            title={t("home.pressButton")}
+            description={t("home.oracleDescription")}
           />
         )}
       </AnimatePresence>

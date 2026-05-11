@@ -1,0 +1,122 @@
+{
+  "header": {
+    "profile": "プロフィール",
+    "betting": "賭け",
+    "admin": "管理者",
+    "signIn": "宮殿に入る"
+  },
+  "home": {
+    "title": "トランプの新たなグルーヴ",
+    "subtitle": "すべての布告は予言である",
+    "totalProphecies": "発動された予言の総数",
+    "invoke": "予言を発動",
+    "invokeLine1": "発動",
+    "invokeLine2": "予言",
+    "invokeAria": "新しいトランプの予言を発動する",
+    "pressButton": "聖なるボタンを押して予言を受け取る",
+    "oracleDescription": "神託はあなたの発動を待っています。",
+    "subscribeHeading": "皇帝の指令を受け取る",
+    "joinBelievers": "{count}人の真の信者に加わる",
+    "pledgeLoyalty": "忠誠を誓う",
+    "emailPlaceholder": "あなたのメール@帝国.com",
+    "successMessage": "皇帝はあなたの誓いを受け取りました",
+    "theOracleError": "神託は一時的に利用できません。もう一度お試しください、定命の者よ。",
+    "noProphecy": "今週の予言はありません。",
+    "betOnThis": "この予言に賭ける"
+  },
+  "profile": {
+    "title": "あなたのプロフィール",
+    "trumpBucks": "トランプバックス",
+    "sacredTreasury": "あなたの神聖な宝庫",
+    "noProfile": "プロフィールが見つかりません。まずボタンをクリックしてみてください！",
+    "loadingFailed": "プロフィールの読み込みに失敗しました",
+    "yourHonors": "あなたの帝国の栄誉",
+    "noBadges": "まだ栄誉はありません",
+    "noBadgesDescription": "神託に相談して、あなたの遺産を始めてください。"
+  },
+  "betting": {
+    "title": "あなたの帝国の賭け",
+    "noBets": "まだ賭けは行われていません。",
+    "searchPlaceholder": "予言のテキストで検索...",
+    "loadingBets": "賭けを読み込み中...",
+    "amountWagered": "賭ける金額",
+    "potentialWin": "的中時：+{amount} トランプバックス",
+    "potentialLoss": "外れ時：-{amount} トランプバックス",
+    "yes": "はい",
+    "no": "いいえ",
+    "placeBet": "予言を封印する",
+    "placingBet": "賭けを実行中...",
+    "balance": "トランプバックス残高：{balance}",
+    "yourPrediction": "あなたの予想：",
+    "betSuccess": "賭けが成功しました！",
+    "betFailed": "賭けに失敗しました",
+    "loadingProphecy": "予言を読み込み中...",
+    "noProphecy": "今週の予言はありません。",
+    "loadingPhrase": "フレーズを読み込み中...",
+    "phraseNotFound": "フレーズが見つかりません。",
+    "prophecyOfWeek": "今週の予言：",
+    "bettingOn": "賭け対象："
+  },
+  "admin": {
+    "title": "帝国指令センター",
+    "accessDenied": "アクセス拒否",
+    "notAuthorized": "このページを表示する権限がありません。",
+    "totalProphecies": "発動された予言の総数",
+    "totalUsers": "総ユーザー数",
+    "totalBets": "総賭け数",
+    "volumeWagered": "賭け総額",
+    "subscribers": "購読者",
+    "activeBets": "アクティブな予言の賭け",
+    "prophecy": "予言",
+    "user": "ユーザー",
+    "amount": "金額",
+    "prediction": "予想",
+    "actions": "アクション",
+    "markTrue": "真とマーク",
+    "markFalse": "偽とマーク"
+  },
+  "newsletter": {
+    "success": "確認メールが送信されました！受信トレイを確認してください。",
+    "error": "購読に失敗しました",
+    "confirmTitle": "帝国への誓いを確認する",
+    "confirmText": "皇帝はあなたの確認を必要としています。下の神聖な印をクリックして、週刊予言を受け取り、帝国裁判所に参加してください。",
+    "pledgeButton": "忠誠を誓う",
+    "ignore": "この指令を要求していない場合は、このメッセージを無視してください。"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "問題が発生しました"
+  },
+  "footer": {
+    "allRightsReserved": "全著作権所有。",
+    "privacyPolicy": "プライバシーポリシー",
+    "cookiePolicy": "クッキーポリシー",
+    "termsConditions": "利用規約",
+    "gdprCompliance": "このサイトはGDPRおよびEU規制に準拠しています。",
+    "viewSource": "ソースを表示",
+    "craftedBy": "Davide Ferigato によって完全に製作"
+  },
+  "error": {
+    "title": "神託がエラーを発しました",
+    "description": "帝国の機構で問題が発生しました。",
+    "tryAgain": "再試行"
+  },
+  "loading": {
+    "title": "神託に相談中..."
+  },
+  "notFound": {
+    "message": "神託でさえこのページを知りません。",
+    "description": "おそらく神々に犠牲にされたのでしょう。",
+    "returnButton": "宮殿に戻る"
+  },
+  "signIn": {
+    "title": "帝国宮殿に入る",
+    "newToEmpire": "帝国は初めてですか？",
+    "joinUs": "参加する →"
+  },
+  "signUp": {
+    "title": "帝国裁判所に参加する",
+    "alreadySubject": "すでに臣民ですか？",
+    "signIn": "サインイン →"
+  }
+}

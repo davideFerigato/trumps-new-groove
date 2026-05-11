@@ -1,10 +1,14 @@
+"use client";
 import { SignIn } from "@clerk/nextjs";
+import { useT } from "@/hooks/useTranslation";
 
 export default function SignInPage() {
+  const { t } = useT();
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4">
       <h1 className="text-3xl font-cinzel-decorative gold-shimmer mb-8 text-center">
-        Enter the Imperial Palace
+        {t("signIn.title")}
       </h1>
       <SignIn
         appearance={{
@@ -25,9 +29,9 @@ export default function SignInPage() {
         }}
       />
       <p className="mt-6 text-gold-600">
-        New to the Empire?{' '}
+        {t("signIn.newToEmpire")}{' '}
         <a href="/sign-up" className="text-gold-400 hover:underline font-cinzel">
-          Join Us →
+          {t("signIn.joinUs")}
         </a>
       </p>
     </div>

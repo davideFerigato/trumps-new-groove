@@ -1,0 +1,122 @@
+{
+  "header": {
+    "profile": "Profilo",
+    "betting": "Scommesse",
+    "admin": "Admin",
+    "signIn": "ENTRA NEL PALAZZO"
+  },
+  "home": {
+    "title": "The Trump's New Groove",
+    "subtitle": "Dove Ogni Decreto è una Profezia",
+    "totalProphecies": "Profezie Totali Invocate",
+    "invoke": "INVOCA PROFEZIA",
+    "invokeLine1": "INVOCA",
+    "invokeLine2": "PROFEZIA",
+    "invokeAria": "Invoca una nuova profezia di Trump",
+    "pressButton": "Premi il sacro pulsante per ricevere la tua profezia",
+    "oracleDescription": "L'oracolo attende la tua invocazione.",
+    "subscribeHeading": "Ricevi i Dispacci dell'Imperatore",
+    "joinBelievers": "Unisciti a {count} veri credenti",
+    "pledgeLoyalty": "Giura Fedeltà",
+    "emailPlaceholder": "tua.email@impero.com",
+    "successMessage": "L'Imperatore ha ricevuto il tuo giuramento",
+    "theOracleError": "L'Oracolo è temporaneamente indisponibile. Riprova, mortale.",
+    "noProphecy": "Nessuna profezia questa settimana.",
+    "betOnThis": "Scommetti su questa Profezia"
+  },
+  "profile": {
+    "title": "Il Tuo Profilo",
+    "trumpBucks": "TrumpBucks",
+    "sacredTreasury": "Il Tuo Sacro Tesoro",
+    "noProfile": "Nessun profilo trovato. Prova a cliccare il pulsante prima!",
+    "loadingFailed": "Caricamento profilo fallito",
+    "yourHonors": "I Tuoi Onori Imperiali",
+    "noBadges": "Ancora nessun onore",
+    "noBadgesDescription": "Consulta l'oracolo per iniziare la tua eredità."
+  },
+  "betting": {
+    "title": "Le Tue Scommesse Imperiali",
+    "noBets": "Nessuna scommessa piazzata.",
+    "searchPlaceholder": "Cerca per testo della profezia...",
+    "loadingBets": "Caricamento scommesse...",
+    "amountWagered": "Importo da scommettere",
+    "potentialWin": "Se corretto: +{amount} TrumpBucks",
+    "potentialLoss": "Se sbagliato: -{amount} TrumpBucks",
+    "yes": "SÌ",
+    "no": "NO",
+    "placeBet": "SIGILLA LA PROFEZIA",
+    "placingBet": "Piazzamento scommessa...",
+    "balance": "Il tuo saldo TrumpBucks: {balance}",
+    "yourPrediction": "La tua previsione:",
+    "betSuccess": "Scommessa piazzata con successo!",
+    "betFailed": "Scommessa fallita",
+    "loadingProphecy": "Caricamento profezia...",
+    "noProphecy": "Nessuna profezia questa settimana.",
+    "loadingPhrase": "Caricamento frase...",
+    "phraseNotFound": "Frase non trovata.",
+    "prophecyOfWeek": "Profezia della Settimana:",
+    "bettingOn": "Scommettendo su:"
+  },
+  "admin": {
+    "title": "Centro di Comando Imperiale",
+    "accessDenied": "Accesso Negato",
+    "notAuthorized": "Non sei autorizzato a visualizzare questa pagina.",
+    "totalProphecies": "Profezie Totali Invocate",
+    "totalUsers": "Utenti Totali",
+    "totalBets": "Scommesse Totali",
+    "volumeWagered": "Volume Scommesso",
+    "subscribers": "Iscritti",
+    "activeBets": "Scommesse Attive sulle Profezie",
+    "prophecy": "Profezia",
+    "user": "Utente",
+    "amount": "Importo",
+    "prediction": "Previsione",
+    "actions": "Azioni",
+    "markTrue": "Segna VERO",
+    "markFalse": "Segna FALSO"
+  },
+  "newsletter": {
+    "success": "Email di conferma inviata! Controlla la tua casella.",
+    "error": "Iscrizione fallita",
+    "confirmTitle": "Conferma il Tuo Giuramento all'Impero",
+    "confirmText": "L'Imperatore richiede la tua conferma. Clicca il sigillo sacro qui sotto per ricevere la profezia settimanale e unirti alla Corte Imperiale.",
+    "pledgeButton": "GIURA FEDELTÀ",
+    "ignore": "Se non hai richiesto questo decreto, ignora semplicemente questo messaggio."
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Qualcosa è andato storto"
+  },
+  "footer": {
+    "allRightsReserved": "Tutti i diritti riservati.",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsConditions": "Termini e Condizioni",
+    "gdprCompliance": "Questo sito è conforme al GDPR e alle normative UE.",
+    "viewSource": "Vedi Sorgente",
+    "craftedBy": "Realizzato interamente da Davide Ferigato"
+  },
+  "error": {
+    "title": "L'Oracolo Ha Emesso un Errore",
+    "description": "Qualcosa è andato storto nel macchinario imperiale.",
+    "tryAgain": "Riprova"
+  },
+  "loading": {
+    "title": "Consultando l'Oracolo..."
+  },
+  "notFound": {
+    "message": "Nemmeno l'Oracolo conosce questa pagina.",
+    "description": "Forse è stata sacrificata agli dei.",
+    "returnButton": "Ritorna al Palazzo"
+  },
+  "signIn": {
+    "title": "Entra nel Palazzo Imperiale",
+    "newToEmpire": "Nuovo nell'Impero?",
+    "joinUs": "Unisciti a Noi →"
+  },
+  "signUp": {
+    "title": "Unisciti alla Corte Imperiale",
+    "alreadySubject": "Sei già un suddito?",
+    "signIn": "Accedi →"
+  }
+}

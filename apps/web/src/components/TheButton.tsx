@@ -3,8 +3,10 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { trpc } from "@/lib/trpc/react";
 import { useSoundStore } from "@/store/useSoundStore";
+import { useT } from "@/hooks/useTranslation";
 
 export default function TheButton() {
+  const { t } = useT();
   const clickMutation = trpc.clicks.click.useMutation();
   const utils = trpc.useUtils();
   const soundEnabled = useSoundStore((s) => s.soundEnabled);
@@ -60,13 +62,13 @@ export default function TheButton() {
         disabled={clickMutation.isPending}
         whileTap={{ scale: 0.9 }}
         className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-gradient-radial from-gold-600 to-gold-900 border-4 border-gold-400 shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.6)] transition-shadow focus:outline-none focus:ring-4 focus:ring-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label="Invoke a new Trump prophecy"
+        aria-label={t("home.invokeAria")}
       >
         <span className="block text-center">
           <span className="font-cinzel-decorative text-white text-xl leading-tight">
-            INVOKE
+            {t("home.invokeLine1")}
             <br />
-            PROPHECY
+            {t("home.invokeLine2")}
           </span>
         </span>
       </motion.button>

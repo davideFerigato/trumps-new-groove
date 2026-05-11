@@ -1,13 +1,15 @@
 "use client";
 import { trpc } from "@/lib/trpc/react";
 import { useState } from "react";
+import { useT } from "@/hooks/useTranslation";
 
 export default function MyBetsList() {
+  const { t } = useT();
   const { data: bets, isLoading } = trpc.bets.myBets.useQuery();
   const [searchTerm, setSearchTerm] = useState("");
 
-  if (isLoading) return <p>Loading bets...</p>;
-  if (!bets || bets.length === 0) return <p className="text-gold-600 text-center">No bets placed yet.</p>;
+  if (isLoading) return <p>{t("betting.loadingBets")}</p>;
+  if (!bets || bets.length === 0) return <p className="text-gold-600 text-center">{t("betting.noBets")}</p>;
 
   // Filtra in base al testo della frase
   const filteredBets = bets.filter(bet =>
@@ -20,7 +22,7 @@ export default function MyBetsList() {
       <div className="mb-6">
         <input
           type="text"
-          placeholder="Search by prophecy text..."
+          placeholder={t("betting.searchPlaceholder")}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full max-w-md mx-auto block px-4 py-2 bg-obsidian border border-gold-600 rounded-lg text-bone-white font-cinzel placeholder:text-gold-600/50 focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -37,7 +39,7 @@ export default function MyBetsList() {
             <div>
               <p className="text-sm text-gold-400 italic">“{bet.phraseText}”</p>
               <p className="text-xs text-gold-600 mt-1">
-                {bet.predictedOutcome ? "YES" : "NO"} • {bet.amount} TB
+                {bet.predictedOutcome ? t("betting.yes") : t("betting.no")} • {bet.amount} TB
               </p>
             </div>
             <div className="text-right">

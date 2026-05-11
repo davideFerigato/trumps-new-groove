@@ -1,0 +1,122 @@
+{
+  "header": {
+    "profile": "Profil",
+    "betting": "Paris",
+    "admin": "Admin",
+    "signIn": "ENTRER AU PALAIS"
+  },
+  "home": {
+    "title": "The Trump's New Groove",
+    "subtitle": "Où Chaque Décret est une Prophétie",
+    "totalProphecies": "Prophéties Totales Invoquées",
+    "invoke": "INVOQUER PROPHÉTIE",
+    "invokeLine1": "INVOQUER",
+    "invokeLine2": "PROPHÉTIE",
+    "invokeAria": "Invoque une nouvelle prophétie de Trump",
+    "pressButton": "Appuie sur le bouton sacré pour recevoir ta prophétie",
+    "oracleDescription": "L'oracle attend ton invocation.",
+    "subscribeHeading": "Recevoir les Dépêches de l'Empereur",
+    "joinBelievers": "Rejoins {count} vrais croyants",
+    "pledgeLoyalty": "Prêter Allégeance",
+    "emailPlaceholder": "ton.email@empire.com",
+    "successMessage": "L'Empereur a reçu ton serment",
+    "theOracleError": "L'Oracle est temporairement indisponible. Réessaie, mortel.",
+    "noProphecy": "Pas de prophétie cette semaine.",
+    "betOnThis": "Parier sur cette Prophétie"
+  },
+  "profile": {
+    "title": "Ton Profil",
+    "trumpBucks": "TrumpBucks",
+    "sacredTreasury": "Ton Trésor Sacré",
+    "noProfile": "Profil non trouvé. Essaie d'abord de cliquer sur le bouton!",
+    "loadingFailed": "Échec du chargement du profil",
+    "yourHonors": "Tes Honneurs Impériaux",
+    "noBadges": "Aucun honneur pour l'instant",
+    "noBadgesDescription": "Consulte l'oracle pour commencer ton héritage."
+  },
+  "betting": {
+    "title": "Tes Paris Impériaux",
+    "noBets": "Aucun pari placé.",
+    "searchPlaceholder": "Recherche par texte de prophétie...",
+    "loadingBets": "Chargement des paris...",
+    "amountWagered": "Montant à parier",
+    "potentialWin": "Si correct : +{amount} TrumpBucks",
+    "potentialLoss": "Si incorrect : -{amount} TrumpBucks",
+    "yes": "OUI",
+    "no": "NON",
+    "placeBet": "SCELLER LA PROPHÉTIE",
+    "placingBet": "Placement du pari...",
+    "balance": "Ton solde de TrumpBucks : {balance}",
+    "yourPrediction": "Ta prédiction :",
+    "betSuccess": "Pari placé avec succès !",
+    "betFailed": "Échec du pari",
+    "loadingProphecy": "Chargement de la prophétie...",
+    "noProphecy": "Pas de prophétie cette semaine.",
+    "loadingPhrase": "Chargement de la phrase...",
+    "phraseNotFound": "Phrase non trouvée.",
+    "prophecyOfWeek": "Prophétie de la Semaine :",
+    "bettingOn": "Pari sur :"
+  },
+  "admin": {
+    "title": "Centre de Commandement Impérial",
+    "accessDenied": "Accès Refusé",
+    "notAuthorized": "Vous n'êtes pas autorisé à voir cette page.",
+    "totalProphecies": "Prophéties Totales Invoquées",
+    "totalUsers": "Utilisateurs Totaux",
+    "totalBets": "Paris Totaux",
+    "volumeWagered": "Volume Parié",
+    "subscribers": "Abonnés",
+    "activeBets": "Paris Actifs sur les Prophéties",
+    "prophecy": "Prophétie",
+    "user": "Utilisateur",
+    "amount": "Montant",
+    "prediction": "Prédiction",
+    "actions": "Actions",
+    "markTrue": "Marquer VRAI",
+    "markFalse": "Marquer FAUX"
+  },
+  "newsletter": {
+    "success": "Email de confirmation envoyé ! Vérifie ta boîte de réception.",
+    "error": "Échec de l'abonnement",
+    "confirmTitle": "Confirme Ton Serment à l'Empire",
+    "confirmText": "L'Empereur exige ta confirmation. Clique sur le sceau sacré ci-dessous pour recevoir la prophétie hebdomadaire et rejoindre la Cour Impériale.",
+    "pledgeButton": "PRÊTER ALLÉGEANCE",
+    "ignore": "Si tu n'as pas demandé ce décret, ignore simplement ce message."
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Quelque chose a mal tourné"
+  },
+  "footer": {
+    "allRightsReserved": "Tous droits réservés.",
+    "privacyPolicy": "Politique de Confidentialité",
+    "cookiePolicy": "Politique de Cookies",
+    "termsConditions": "Termes et Conditions",
+    "gdprCompliance": "Ce site est conforme au RGPD et aux règlements de l'UE.",
+    "viewSource": "Voir le Code Source",
+    "craftedBy": "Entièrement conçu par Davide Ferigato"
+  },
+  "error": {
+    "title": "L'Oracle a Émis une Erreur",
+    "description": "Quelque chose a mal tourné dans la machinerie impériale.",
+    "tryAgain": "Réessayer"
+  },
+  "loading": {
+    "title": "Consultation de l'Oracle..."
+  },
+  "notFound": {
+    "message": "Même l'Oracle ne connaît pas cette page.",
+    "description": "Peut-être a-t-elle été sacrifiée aux dieux.",
+    "returnButton": "Retourner au Palais"
+  },
+  "signIn": {
+    "title": "Entrer dans le Palais Impérial",
+    "newToEmpire": "Nouveau dans l'Empire ?",
+    "joinUs": "Rejoins-nous →"
+  },
+  "signUp": {
+    "title": "Rejoindre la Cour Impériale",
+    "alreadySubject": "Déjà un sujet ?",
+    "signIn": "Se Connecter →"
+  }
+}

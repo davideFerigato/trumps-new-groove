@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc/react";
 import Button from "./ui/Button";
 import ErrorMessage from "./ui/ErrorMessage";
 import { useState } from "react";
+import { useT } from "@/hooks/useTranslation";
 
 const betSchema = z.object({
   amount: z.number().min(1, "Must bet at least 1 TrumpBuck"),
@@ -19,6 +20,7 @@ interface BetOnPhraseFormProps {
 }
 
 export default function BetOnPhraseForm({ phraseId }: BetOnPhraseFormProps) {
+  const { t } = useT();
   const utils = trpc.useUtils();
   const { data: phrase, isLoading: phraseLoading } = trpc.phrases.getById.useQuery({ id: phraseId });
   const { data: profile } = trpc.user.profile.useQuery();
@@ -45,29 +47,31 @@ export default function BetOnPhraseForm({ phraseId }: BetOnPhraseFormProps) {
     setSuccessMsg(null);
     try {
       await placeBet.mutateAsync({
-        prophecyId: phrase.id,  // rimane lo stesso campo DB
+        prophecyId: phrase.id,
         amount: data.amount,
         prediction: data.prediction === "yes",
       });
-      setSuccessMsg("Bet placed successfully!");
+      setSuccessMsg(t("betting.betSuccess"));
     } catch (_err) {
       // errore gestito dal mutation state
     }
   };
 
-  if (phraseLoading) return <p>Loading phrase...</p>;
-  if (!phrase) return <p>Phrase not found.</p>;
+  if (phraseLoading) return <p>{t("betting.loadingPhrase")}</p>;
+  if (!phrase) return <p>{t("betting.phraseNotFound")}</p>;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-md mx-auto">
       <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
-        <h2 className="font-bold text-lg">Betting on:</h2>
+        <h2 className="font-bold text-lg">{t("betting.bettingOn")}</h2>
         <p className="italic">“{phrase.text}”</p>
       </div>
 
       <div>
-        <label className="block mb-1">Your TrumpBucks balance: <strong>{profile?.trumpbucksBalance ?? 0}</strong></label>
-        <label className="block mb-1">Amount to bet:</label>
+        <label className="block mb-1">
+          {t("betting.balance", { balance: profile?.trumpbucksBalance ?? 0 })}
+        </label>
+        <label className="block mb-1">{t("betting.amountWagered")}</label>
         <input
           type="number"
           {...register("amount", { valueAsNumber: true })}
@@ -78,23 +82,23 @@ export default function BetOnPhraseForm({ phraseId }: BetOnPhraseFormProps) {
       </div>
 
       <div>
-        <label className="block mb-1">Your prediction:</label>
+        <label className="block mb-1">{t("betting.yourPrediction")}</label>
         <div className="flex gap-4">
           <label className="flex items-center gap-1">
-            <input type="radio" value="yes" {...register("prediction")} /> YES
+            <input type="radio" value="yes" {...register("prediction")} /> {t("betting.yes")}
           </label>
           <label className="flex items-center gap-1">
-            <input type="radio" value="no" {...register("prediction")} /> NO
+            <input type="radio" value="no" {...register("prediction")} /> {t("betting.no")}
           </label>
         </div>
         {errors.prediction && <p className="text-red-500 text-sm">{errors.prediction.message}</p>}
       </div>
 
       <Button type="submit" disabled={placeBet.isPending}>
-        {placeBet.isPending ? "Placing bet..." : "Place Bet"}
+        {placeBet.isPending ? t("betting.placingBet") : t("betting.placeBet")}
       </Button>
 
-      {placeBet.isError && <ErrorMessage message={placeBet.error?.message || "Bet failed"} />}
+      {placeBet.isError && <ErrorMessage message={placeBet.error?.message || t("betting.betFailed")} />}
       {successMsg && <p className="text-green-600">{successMsg}</p>}
     </form>
   );

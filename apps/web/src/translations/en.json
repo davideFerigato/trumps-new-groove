@@ -1,0 +1,122 @@
+{
+  "header": {
+    "profile": "Profile",
+    "betting": "My Bets",
+    "admin": "Admin",
+    "signIn": "ENTER THE PALACE"
+  },
+  "home": {
+    "title": "The Trump's New Groove",
+    "subtitle": "Where Every Decree is a Prophecy",
+    "totalProphecies": "Total Prophecies Invoked",
+    "invoke": "INVOKE PROPHECY",
+    "invokeLine1": "INVOKE",
+    "invokeLine2": "PROPHECY",
+    "invokeAria": "Invoke a new Trump prophecy",
+    "pressButton": "Press the sacred button to receive your prophecy",
+    "oracleDescription": "The oracle awaits your invocation.",
+    "subscribeHeading": "Receive the Emperor's Dispatches",
+    "joinBelievers": "Join {count} true believers",
+    "pledgeLoyalty": "Pledge Loyalty",
+    "emailPlaceholder": "your.email@empire.com",
+    "successMessage": "The Emperor has received your oath",
+    "theOracleError": "The Oracle is temporarily unavailable. Try again, mortal.",
+    "noProphecy": "No prophecy this week.",
+    "betOnThis": "Bet on this Prophecy"
+  },
+  "profile": {
+    "title": "Your Profile",
+    "trumpBucks": "TrumpBucks",
+    "sacredTreasury": "Your Sacred Treasury",
+    "noProfile": "No profile found. Try clicking the button first!",
+    "loadingFailed": "Failed to load profile",
+    "yourHonors": "Your Imperial Honors",
+    "noBadges": "No honors yet",
+    "noBadgesDescription": "Consult the oracle to begin your legacy."
+  },
+  "betting": {
+    "title": "Your Imperial Bets",
+    "noBets": "No bets placed yet.",
+    "searchPlaceholder": "Search by prophecy text...",
+    "loadingBets": "Loading bets...",
+    "amountWagered": "Amount to wager",
+    "potentialWin": "If correct: +{amount} TrumpBucks",
+    "potentialLoss": "If wrong: -{amount} TrumpBucks",
+    "yes": "YES",
+    "no": "NO",
+    "placeBet": "SEAL THE PROPHECY",
+    "placingBet": "Placing bet...",
+    "balance": "Your TrumpBucks balance: {balance}",
+    "yourPrediction": "Your prediction:",
+    "betSuccess": "Bet placed successfully!",
+    "betFailed": "Bet failed",
+    "loadingProphecy": "Loading prophecy...",
+    "noProphecy": "No prophecy this week.",
+    "loadingPhrase": "Loading phrase...",
+    "phraseNotFound": "Phrase not found.",
+    "prophecyOfWeek": "Prophecy of the Week:",
+    "bettingOn": "Betting on:"
+  },
+  "admin": {
+    "title": "Imperial Command Center",
+    "accessDenied": "Access Denied",
+    "notAuthorized": "You are not authorized to view this page.",
+    "totalProphecies": "Total Prophecies Invoked",
+    "totalUsers": "Total Users",
+    "totalBets": "Total Bets",
+    "volumeWagered": "Volume Wagered",
+    "subscribers": "Subscribers",
+    "activeBets": "Active Prophecy Bets",
+    "prophecy": "Prophecy",
+    "user": "User",
+    "amount": "Amount",
+    "prediction": "Prediction",
+    "actions": "Actions",
+    "markTrue": "Mark TRUE",
+    "markFalse": "Mark FALSE"
+  },
+  "newsletter": {
+    "success": "Confirmation email sent! Check your inbox.",
+    "error": "Subscription failed",
+    "confirmTitle": "Confirm Your Oath to the Empire",
+    "confirmText": "The Emperor requires your confirmation. Click the sacred seal below to receive the weekly prophecy and join the Imperial Court.",
+    "pledgeButton": "PLEDGE LOYALTY",
+    "ignore": "If you didn't request this decree, simply ignore this message."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsConditions": "Terms & Conditions",
+    "gdprCompliance": "This site complies with GDPR and EU regulations.",
+    "viewSource": "View Source",
+    "craftedBy": "Crafted entirely by Davide Ferigato"
+  },
+  "error": {
+    "title": "The Oracle Has Spoken an Error",
+    "description": "Something went wrong in the imperial machinery.",
+    "tryAgain": "Try Again"
+  },
+  "loading": {
+    "title": "Consulting the Oracle..."
+  },
+  "notFound": {
+    "message": "Even the Oracle doesn't know this page.",
+    "description": "Perhaps it was sacrificed to the gods.",
+    "returnButton": "Return to the Palace"
+  },
+  "signIn": {
+    "title": "Enter the Imperial Palace",
+    "newToEmpire": "New to the Empire?",
+    "joinUs": "Join Us →"
+  },
+  "signUp": {
+    "title": "Join the Imperial Court",
+    "alreadySubject": "Already a subject?",
+    "signIn": "Sign In →"
+  }
+}

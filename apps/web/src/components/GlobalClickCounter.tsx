@@ -2,8 +2,10 @@
 import { useEffect } from "react";
 import { trpc } from "@/lib/trpc/react";
 import Skeleton from "./ui/Skeleton";
+import { useT } from "@/hooks/useTranslation";
 
 export default function GlobalClickCounter() {
+  const { t } = useT();
   const { data: count, isLoading, refetch } = trpc.clicks.globalCount.useQuery();
 
   // Poll every 5 seconds for real-time updates
@@ -20,7 +22,7 @@ export default function GlobalClickCounter() {
   return (
     <div className="text-center my-8">
       <p className="text-sm font-uncial text-gold-400 uppercase tracking-widest mb-2">
-        Total Prophecies Invoked
+        {t("admin.totalProphecies")}
       </p>
       <span className="text-5xl sm:text-7xl font-cinzel-decorative font-extrabold gold-shimmer">
         {displayCount.toLocaleString()}
