@@ -1,6 +1,6 @@
 <div align="center">
   <img src="apps/web/public/images/logo.png" alt="Trump's New Groove Logo" width="120" />
-  <h1>🏛️ THE TRUMP'S NEW GROOVE</h1>
+  <h1>THE TRUMP'S NEW GROOVE</h1>
   <p><em>“Where Every Decree is a Prophecy”</em></p>
 
   <!-- Dynamic badges (shields.io) -->
@@ -17,6 +17,7 @@
     <img src="https://img.shields.io/badge/vitest-tests-6e9f18?logo=vitest" alt="Vitest"/>
     <img src="https://img.shields.io/badge/playwright-e2e-45ba4b?logo=playwright" alt="Playwright"/>
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
+    <img src="https://img.shields.io/badge/GDPR-compliant-2ea44f?logo=shield" alt="GDPR Compliant"/>
     <img src="https://img.shields.io/badge/i18n-5_languages-eab308" alt="i18n"/>
     <img src="https://img.shields.io/badge/huggingface-llm-ffd21e?logo=huggingface" alt="Hugging Face"/>
   </p>
@@ -29,6 +30,7 @@
 - **🕹️ Sacred Ritual Button** – Click the central button to generate a new satirical Trump prophecy (Framer Motion animations, gold particles, sound effect).
 - **🤖 AI Generation** – Phrases are created on the fly using **Llama 3.1** via Hugging Face Inference API, with automatic fallback to a local generator of 160+ predefined phrases.
 - **🌍 Internationalization** – 5 supported languages: English, Italian, Spanish, French, Japanese. Language selector in the header.
+- **🔒 GDPR Compliant** – Dedicated `/privacy`, `/cookies`, and `/terms` pages. GDPR Rights section in the user profile (export data, delete account). Cookie policy with only technical cookies. Double opt‑in newsletter with easy unsubscribe. Full compliance with EU regulations.
 - **🔐 Authentication** – Login with Google or GitHub via Clerk. Protection of `/profile`, `/betting`, `/admin` routes.
 - **👤 User Profile** – TrumpBucks wallet, click history, earned badges.
 - **🏅 Badges** – 5 automatically unlockable badges (First Click, Click Addict, True Believer, Prophet, Whale).
@@ -258,6 +260,24 @@ The admin can:
 The site supports 5 languages. Translation files are located in `apps/web/src/translations/`.  
 To add a new language, create a new JSON file with the same keys.  
 The language selector in the header persists the choice in `localStorage`.
+
+---
+
+## 🔒 GDPR Compliance
+
+The project is designed to respect the General Data Protection Regulation (GDPR) of the European Union.
+
+- **Data Controller:** Davide Ferigato (contact: davide.ferigato@email.com).
+- **Personal Data Collected:** name, email, profile picture (provided by Clerk during OAuth), IP address, browser info, game data (TrumpBucks, clicks, bets, badges), and newsletter subscription email.
+- **Purpose of Processing:** providing the core service (authentication, game mechanics), sending the newsletter (only with explicit consent), and ensuring site security.
+- **Legal Basis:** Consent (for newsletter) and Legitimate Interest (for site operation).
+- **Data Retention:** Data is kept until the user requests deletion. Newsletter data is kept until unsubscription.
+- **Data Processors:** Clerk (auth, USA, with standard contractual clauses), Supabase (database, EU region), Upstash (Redis, EU region), Resend (email, USA), Vercel (hosting, USA).
+- **User Rights:** Access, Rectification, Erasure ("Right to be Forgotten"), Restriction, Portability, Objection, and Withdrawal of Consent. All rights are exercisable via the profile page (GDPR Rights section) or by email.
+- **Cookie Policy:** The site uses only technical cookies (Clerk for authentication) and localStorage for preferences (language/theme). No profiling or third‑party cookies are used. See the dedicated `/cookies` page.
+- **Data Breach Procedure:** In the unlikely event of a data breach, affected users will be notified within 72 hours.
+
+Full privacy, cookie, and terms pages are accessible from the footer.
 
 ---
 
