@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useT } from "@/hooks/useTranslation";
 
 export default function Footer() {
@@ -16,7 +17,19 @@ export default function Footer() {
           </div>
 
           <div className="text-gold-600 text-sm">
-            <p>{t("footer.privacyPolicy")} | {t("footer.cookiePolicy")} | {t("footer.termsConditions")}</p>
+            <p>
+              <Link href="/privacy" className="hover:text-gold-400 transition-colors">
+                {t("footer.privacyPolicy")}
+              </Link>
+              {" | "}
+              <Link href="/cookies" className="hover:text-gold-400 transition-colors">
+                {t("footer.cookiePolicy")}
+              </Link>
+              {" | "}
+              <Link href="/terms" className="hover:text-gold-400 transition-colors">
+                {t("footer.termsConditions")}
+              </Link>
+            </p>
             <p className="mt-2">{t("footer.gdprCompliance")}</p>
           </div>
 

@@ -24,7 +24,7 @@
     "@repo/typescript-config": "workspace:*",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
-    "drizzle-kit": "^0.24.0",
+    "drizzle-kit": "^0.31.10",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0"
   }
