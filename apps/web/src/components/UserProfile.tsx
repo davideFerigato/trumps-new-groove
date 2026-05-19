@@ -4,6 +4,7 @@ import BadgeCollection from "./BadgeCollection";
 import Skeleton from "./ui/Skeleton";
 import ErrorMessage from "./ui/ErrorMessage";
 import { useT } from "@/hooks/useTranslation";
+import GdprRights from "./GdprRights";
 
 export default function UserProfile({ userId }: { userId: string }) {
   const { t } = useT();
@@ -25,6 +26,7 @@ export default function UserProfile({ userId }: { userId: string }) {
       </div>
 
       <BadgeCollection userId={userId} />
+      <GdprRights />
     </div>
   );
 }

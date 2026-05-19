@@ -5,6 +5,7 @@ import { betsRouter } from "./bets";
 import { userRouter } from "./user";
 import { newsletterRouter } from "./newsletter";
 import { adminRouter } from "./admin";
+import { gdprRouter } from "./gdpr";
 
 // nel router finale
 export const appRouter = t.router({
@@ -14,6 +15,7 @@ export const appRouter = t.router({
   user: userRouter,
   newsletter: newsletterRouter,
   admin: adminRouter,
+  gdpr: gdprRouter,
 });
 
 export type AppRouter = typeof appRouter;
