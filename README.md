@@ -267,7 +267,7 @@ The language selector in the header persists the choice in `localStorage`.
 
 The project is designed to respect the General Data Protection Regulation (GDPR) of the European Union.
 
-- **Data Controller:** Davide Ferigato (contact: davide.ferigato@email.com).
+- **Data Controller:** Davide Ferigato (contact: d.m.f.s@outlook.it).
 - **Personal Data Collected:** name, email, profile picture (provided by Clerk during OAuth), IP address, browser info, game data (TrumpBucks, clicks, bets, badges), and newsletter subscription email.
 - **Purpose of Processing:** providing the core service (authentication, game mechanics), sending the newsletter (only with explicit consent), and ensuring site security.
 - **Legal Basis:** Consent (for newsletter) and Legitimate Interest (for site operation).
