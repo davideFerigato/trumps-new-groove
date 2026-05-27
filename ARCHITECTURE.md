@@ -1,51 +1,68 @@
-# 🏛️ Architecture Diagram (C4 – Container Level)
+# 🏛️ Architecture Diagram (Container Level)
 
 ```mermaid
-C4Container
-    title Container diagram for Trump's New Groove
+flowchart TB
+    subgraph User["👤 User"]
+        browser["Browser / Mobile"]
+    end
 
-    Person(user, "User", "Browser/mobile")
+    subgraph Vercel["☁️ Vercel Platform"]
+        frontend["Next.js Frontend<br/>(React 19, Tailwind v4)"]
+        api["tRPC API Layer<br/>(Node.js, Bun, type‑safe)"]
+    end
 
-    System_Boundary(platform, "Vercel Platform") {
-        Container(web, "Next.js Frontend", "React 19, Tailwind CSS v4", "Serves UI, handles routing, manages state")
-        Container(trpc, "tRPC API", "Node.js, Bun", "Type‑safe backend logic, procedures, rate limiting")
-    }
+    subgraph Services["🔗 External Services"]
+        clerk["Clerk Auth<br/>(SaaS)"]
+        supabase["Supabase<br/>(PostgreSQL)"]
+        upstash["Upstash Redis<br/>(Cache / Rate Limit)"]
+        resend["Resend<br/>(Email API)"]
+        huggingface["Hugging Face Inference<br/>(LLM – Llama 3.1)"]
+    end
 
-    System_Boundary(external, "External Services") {
-        Container(clerk, "Clerk Auth", "SaaS", "User authentication, OAuth, session management")
-        Container(supabase, "Supabase", "PostgreSQL", "Persistent data: users, bets, badges, newsletter")
-        Container(upstash, "Upstash Redis", "Redis", "Global click counter, rate limiter, leaderboard")
-        Container(resend, "Resend", "Email API", "Send confirmation & welcome emails")
-        Container(huggingface, "Hugging Face Inference", "REST API", "Generate satirical phrases via LLM (Llama 3.1)")
-    }
+    subgraph Fallback["🔄 Fallback"]
+        localgen["Local Phrase Generator<br/>(160+ templates)"]
+    end
 
-    Container(local, "Local Fallback Generator", "Node.js module", "Generates phrases from 160+ templates if LLM fails")
-
-    Rel(user, web, "Visits", "HTTPS")
-    Rel(user, clerk, "Login", "OAuth redirect")
-    Rel(web, trpc, "API calls", "tRPC over HTTP/2")
-    Rel(web, clerk, "Auth state", "JWT session")
-    Rel(trpc, clerk, "Verify session", "REST")
-    Rel(trpc, supabase, "Read/write data", "PostgreSQL")
-    Rel(trpc, upstash, "Get/update counters, rate limit", "REST")
-    Rel(trpc, resend, "Send emails", "REST")
-    Rel(trpc, huggingface, "Generate phrase", "REST")
-    Rel(trpc, local, "Fallback phrase", "Module import")
-    Rel(platform, trpc, "Weekly cron", "Vercel Cron → /api/cron/prophecy")
+    browser -->|"HTTPS"| frontend
+    browser -->|"OAuth"| clerk
+    frontend -->|"tRPC (HTTP/2)"| api
+    frontend -->|"JWT session"| clerk
+    api -->|"Verify session"| clerk
+    api -->|"Read/write data (Drizzle ORM)"| supabase
+    api -->|"Counters, rate limit"| upstash
+    api -->|"Send emails"| resend
+    api -->|"Generate phrase"| huggingface
+    api -.->|"Fallback on error"| localgen
+    Vercel -.->|"Weekly cron"| api
 ```
 
 ## Explanation
 
-The diagram follows the **C4 model – Container level**, showing the system's main runtime containers and their interactions.
+The diagram above shows the **Container-level** architecture of **The Trump's New Groove**.
 
-- **User** interacts only with the Next.js frontend and Clerk (for login).
-- **Next.js Frontend** is a static site served by Vercel; all dynamic data comes through the **tRPC API**.
-- **tRPC API** is the core backend, running as Next.js API routes. It orchestrates all business logic and communicates with external services:
-  - **Clerk** for authentication and session verification.
-  - **Supabase** for persistent storage (user wallets, bets, badges, newsletter subscriptions).
-  - **Upstash Redis** for real‑time counters and rate limiting.
-  - **Resend** for transactional emails (newsletter confirmation/welcome).
-  - **Hugging Face Inference API** to generate AI‑powered satirical phrases. If that API fails, a **Local Fallback Generator** ensures the user always gets a funny phrase.
-- **Vercel Cron** triggers a weekly endpoint to select a new "Prophecy of the Week".
+### Nodes (Containers)
 
-All external services are SaaS products, chosen for their free tiers and developer experience, making the project self‑contained and easy to deploy.
+| Container | Technology | Purpose |
+|-----------|------------|---------|
+| **Next.js Frontend** | React 19, Tailwind v4, Framer Motion | Delivers the UI, handles client‑side routing and state. |
+| **tRPC API Layer** | tRPC v11, Node.js/Bun, Drizzle ORM | Type‑safe backend logic. Orchestrates all data access and external calls. |
+| **Clerk Auth** | Clerk SaaS | User authentication via Google/GitHub OAuth. Session verification. |
+| **Supabase** | PostgreSQL (Drizzle ORM) | Persistent storage for user wallets, bets, badges, newsletter subscriptions. |
+| **Upstash Redis** | Redis REST API | Real‑time global click counter, daily rate limiter, leaderboard. |
+| **Resend** | Email REST API | Sends confirmation and welcome emails for the newsletter. |
+| **Hugging Face Inference** | REST API (Llama 3.1) | Generates satirical phrases on demand. |
+| **Local Fallback Generator** | Node.js module | Generates a random phrase from 160+ templates if the LLM API fails. |
+| **Vercel Cron** | Cron Job (weekly) | Triggers `/api/cron/prophecy` every Monday to select a new Prophecy of the Week. |
+
+### Flows
+
+1. **User → Frontend:** All UI interactions (click, view profile, place bet) are handled by the Next.js frontend.
+2. **Frontend → tRPC API:** Every API call (click, get phrase, place bet, subscribe newsletter, resolve bet) goes through tRPC, which validates the request and performs the business logic.
+3. **tRPC ↔ Clerk:** For authenticated routes, the API verifies the user’s session token against Clerk before processing.
+4. **tRPC ↔ Supabase:** All persistent data (users, bets, badges, newsletter) is read/written through Drizzle ORM to the PostgreSQL database.
+5. **tRPC ↔ Upstash Redis:** The global click counter is incremented on every click; a daily rate limit is enforced per user; the leaderboard is stored in a sorted set.
+6. **tRPC ↔ Resend:** When a user subscribes or confirms their email, the API sends the appropriate email via Resend.
+7. **tRPC ↔ Hugging Face:** When a new phrase is requested, the API calls the LLM. If the call fails, it falls back to the local generator.
+8. **Vercel Cron → tRPC:** Every Monday, a secured endpoint picks a random phrase and sets it as the “Prophecy of the Week”, making it available for betting.
+
+All components communicate over encrypted HTTPS. The local development environment mirrors this setup using Docker containers for PostgreSQL and Redis.
