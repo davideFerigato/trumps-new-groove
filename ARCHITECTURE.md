@@ -1,6 +1,6 @@
-# Architecture Diagram (C4 – Container Level)
+# 🏛️ Architecture Diagram (C4 – Container Level)
 
-
+```mermaid
 C4Container
     title Container diagram for Trump's New Groove
 
@@ -32,6 +32,7 @@ C4Container
     Rel(trpc, huggingface, "Generate phrase", "REST")
     Rel(trpc, local, "Fallback phrase", "Module import")
     Rel(platform, trpc, "Weekly cron", "Vercel Cron → /api/cron/prophecy")
+```
 
 ## Explanation
 
