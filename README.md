@@ -107,6 +107,8 @@
 
 ## 📁 Project structure (monorepo)
 
+📐 [View the full architecture diagram →](ARCHITECTURE.md)
+
 ```
 trumps-new-groove/
 ├── apps/
