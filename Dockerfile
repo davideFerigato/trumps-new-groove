@@ -2,14 +2,32 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 RUN npm install -g pnpm@10
+
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
 COPY apps/web/package.json ./apps/web/
 COPY packages/api/package.json ./packages/api/
 COPY packages/config/package.json ./packages/config/
 COPY packages/db/package.json ./packages/db/
 COPY tooling/typescript-config/package.json ./tooling/typescript-config/
+
 RUN pnpm install --frozen-lockfile
+
 COPY . .
+
+# Inserisci valori fittizi per tutte le variabili richieste dalla build
+ENV DATABASE_URL=postgresql://user:pass@localhost:5432/db
+ENV UPSTASH_REDIS_REST_URL=https://example.com
+ENV UPSTASH_REDIS_REST_TOKEN=dummy
+ENV CLERK_SECRET_KEY=dummy
+ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=dummy
+ENV CRON_SECRET=dummy
+ENV RESEND_API_KEY=dummy
+ENV HUGGINGFACE_API_KEY=dummy
+ENV HUGGINGFACE_MODEL=dummy
+ENV SENTRY_DSN=dummy
+ENV NEXT_PUBLIC_POSTHOG_KEY=dummy
+ENV NEXT_PUBLIC_POSTHOG_HOST=https://example.com
+
 RUN pnpm run build
 
 # Stage 2: Production
