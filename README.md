@@ -9,7 +9,9 @@
   <a href="https://github.com/davideFerigato/trumps-new-groove/actions"><img src="https://img.shields.io/github/actions/workflow/status/davideFerigato/trumps-new-groove/ci.yml?branch=main&label=CI%2FCD&logo=github" alt="CI/CD"/></a>
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
   <a href="https://doi.org/10.5281/zenodo.20723373"><img src="https://zenodo.org/badge/1222922665.svg" alt="DOI"/></a>
-  <a href="https://hub.docker.com/r/davideferigato/trumps-new-groove"><img src="https://img.shields.io/docker/pulls/davideferigato/trumps-new-groove?logo=docker" alt="Docker Pulls"/></a>
+<a href="https://hub.docker.com/r/davideferigato/trumps-new-groove">
+  <img src="https://img.shields.io/docker/pulls/davideferigato/trumps-new-groove?logo=docker&cache=refresh" alt="Docker Pulls"/>
+</a>
   <a href="https://github.com/davideFerigato/trumps-new-groove#readme"><img src="https://img.shields.io/badge/docs-README%2BArchitecture-blue?logo=readthedocs" alt="Docs"/></a>
   <!-- Stack -->
   <img src="https://img.shields.io/badge/typescript-5.3-blue?logo=typescript" alt="TypeScript"/>
