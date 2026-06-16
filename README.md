@@ -1,26 +1,7 @@
 <div align="center">
   <img src="apps/web/public/images/logo.png" alt="Trump's New Groove Logo" width="120" />
   <h1>THE TRUMP'S NEW GROOVE</h1>
-  <p><em>“Where Every Decree is a Prophecy”</em></p>
-
-  <!-- Dynamic badges (shields.io) -->
-  <p>
-    <a href="https://trumps-new-groove.vercel.app"><img src="https://img.shields.io/badge/🚀%20Live-trump%E2%80%93groove.vercel.app-gold?style=flat&logo=vercel&logoColor=white" alt="Vercel"/></a>
-    <a href="https://github.com/davideFerigato/trumps-new-groove/actions"><img src="https://img.shields.io/github/actions/workflow/status/davideFerigato/trumps-new-groove/ci.yml?branch=main&label=CI%2FCD&logo=github" alt="CI/CD"/></a>
-    <img src="https://img.shields.io/badge/typescript-5.3-blue?logo=typescript" alt="TypeScript"/>
-    <img src="https://img.shields.io/badge/next.js-15.5-black?logo=next.js" alt="Next.js"/>
-    <img src="https://img.shields.io/badge/tailwind-v4-06B6D4?logo=tailwindcss" alt="Tailwind v4"/>
-    <img src="https://img.shields.io/badge/tRPC-v11-2596be?logo=trpc" alt="tRPC"/>
-    <img src="https://img.shields.io/badge/drizzle-orm-0.33.0-ff6b35?logo=drizzle" alt="Drizzle ORM"/>
-    <img src="https://img.shields.io/badge/clerk-auth-6c47ff?logo=clerk" alt="Clerk"/>
-    <img src="https://img.shields.io/badge/resend-email-ff4500?logo=resend" alt="Resend"/>
-    <img src="https://img.shields.io/badge/vitest-tests-6e9f18?logo=vitest" alt="Vitest"/>
-    <img src="https://img.shields.io/badge/playwright-e2e-45ba4b?logo=playwright" alt="Playwright"/>
-    <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
-    <img src="https://img.shields.io/badge/GDPR-compliant-2ea44f?logo=shield" alt="GDPR Compliant"/>
-    <img src="https://img.shields.io/badge/i18n-5_languages-eab308" alt="i18n"/>
-    <img src="https://img.shields.io/badge/huggingface-llm-ffd21e?logo=huggingface" alt="Hugging Face"/>
-  </p>
+  <p><em>“Where Every Decree is a Prophecy”</em></p>  
 </div>
 
 <p align="center">
