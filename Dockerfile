@@ -14,17 +14,20 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-# Inserisci valori fittizi per tutte le variabili richieste dalla build
+# Argomento di build per la chiave pubblica Clerk (da passare con --build-arg)
+ARG NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+
+# Altre variabili fittizie per la build
 ENV DATABASE_URL=postgresql://user:pass@localhost:5432/db
 ENV UPSTASH_REDIS_REST_URL=https://example.com
 ENV UPSTASH_REDIS_REST_TOKEN=dummy
 ENV CLERK_SECRET_KEY=dummy
-ENV NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=dummy
 ENV CRON_SECRET=dummy
 ENV RESEND_API_KEY=dummy
 ENV HUGGINGFACE_API_KEY=dummy
 ENV HUGGINGFACE_MODEL=dummy
-ENV SENTRY_DSN=dummy
+ENV SENTRY_DSN=https://sentry.example.com
 ENV NEXT_PUBLIC_POSTHOG_KEY=dummy
 ENV NEXT_PUBLIC_POSTHOG_HOST=https://example.com
 
